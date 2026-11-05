@@ -1,0 +1,236 @@
+/* ============================================================================
+   MADANI HEALTHCARE — Tema Hijau Madani
+   Hijau tua #14532d · hijau #166534 · hijau muda #dcfce7 · krem #faf9f4 · emas #d97706
+   ========================================================================== */
+
+:root {
+  --hijau-tua: #14532d;
+  --hijau: #166534;
+  --hijau-muda: #dcfce7;
+  --hijau-soft: #f0fdf4;
+  --krem: #faf9f4;
+  --emas: #d97706;
+  --emas-muda: #fef3c7;
+  --sidebar-w: 264px;
+}
+
+* { font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif; }
+body { background: var(--krem); color: #1e293b; }
+a { text-decoration: none; }
+.fw-800 { font-weight: 800; }
+
+/* ---------------- Sidebar ---------------- */
+.sidebar {
+  width: var(--sidebar-w);
+  background: linear-gradient(175deg, var(--hijau-tua) 0%, #0e3f21 100%);
+  color: #fff;
+  display: flex; flex-direction: column;
+  position: fixed; inset-block: 0; left: 0; z-index: 1030;
+}
+@media (min-width: 992px) { .main-area { margin-left: var(--sidebar-w); } }
+@media (max-width: 991.98px) { .sidebar { position: fixed !important; } }
+
+.sidebar-head {
+  display: flex; align-items: center; gap: 10px;
+  padding: 18px 18px 14px;
+  border-bottom: 1px solid rgba(255,255,255,.12);
+}
+.brand-logo-sm {
+  width: 40px; height: 40px; flex: 0 0 40px;
+  background: var(--emas); color: #fff;
+  display: grid; place-items: center;
+  border-radius: 12px; font-size: 1.25rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,.25);
+}
+.sidebar-org { font-size: .68rem !important; line-height: 1.25; }
+
+#sidebar-nav .nav-link {
+  color: rgba(255,255,255,.78);
+  padding: 9px 14px; border-radius: 10px;
+  font-size: .875rem; font-weight: 500;
+  margin-bottom: 2px;
+  transition: all .15s ease;
+}
+#sidebar-nav .nav-link:hover { background: rgba(255,255,255,.09); color: #fff; }
+#sidebar-nav .nav-link.active {
+  background: var(--hijau-muda); color: var(--hijau-tua); font-weight: 700;
+  box-shadow: inset 4px 0 0 var(--emas);
+}
+.sidebar-foot { padding: 12px 18px; border-top: 1px solid rgba(255,255,255,.12); }
+
+/* Label grup menu di sidebar (Utama / Data & Pemeriksaan / Administrasi / Lainnya) */
+.sb-group {
+  list-style: none;
+  font-size: .62rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+  color: rgba(255,255,255,.42);
+  margin: 12px 14px 4px;
+}
+.sb-group:first-child { margin-top: 2px; }
+
+/* ---------------- Menu Cepat (dashboard, dikelompokkan) ---------------- */
+.qmenu-group + .qmenu-group { margin-top: 14px; }
+.qmenu-group-label {
+  font-size: .62rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+  color: #94a38f; margin: 0 2px 6px;
+  display: flex; align-items: center; gap: 8px;
+}
+.qmenu-group-label::after { content: ''; flex: 1; height: 1px; background: #edf2ec; }
+.qmenu {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 10px;
+}
+.qmenu-tile {
+  display: flex; align-items: center; gap: 10px;
+  background: #fff; border: 1px solid #e9eee8; border-radius: 12px;
+  padding: 10px 12px; height: 100%; min-height: 62px; min-width: 0;
+  transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+}
+.qmenu-tile:hover { transform: translateY(-2px); border-color: #bbe7c6; box-shadow: 0 6px 18px rgba(20,83,45,.10); }
+.qmenu-tile:hover .qmenu-icon { background: var(--hijau); color: #fff; }
+.qmenu-icon {
+  width: 38px; height: 38px; flex: 0 0 38px;
+  display: grid; place-items: center;
+  background: var(--hijau-muda); color: var(--hijau);
+  border-radius: 10px; font-size: 1.05rem;
+  transition: background .15s ease, color .15s ease;
+}
+.qmenu-label { font-size: .8rem; font-weight: 700; color: #1e293b; line-height: 1.25; }
+.qmenu-desc { font-size: .68rem; color: #8a9a8e; line-height: 1.3; }
+@media (max-width: 575.98px) {
+  .qmenu { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .qmenu-tile { flex-direction: column; align-items: flex-start; gap: 6px; min-height: 0; }
+}
+
+/* ---------------- Topbar ---------------- */
+.main-area { min-height: 100vh; display: flex; flex-direction: column; }
+.topbar {
+  background: #fff;
+  padding: 12px 20px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 10px; flex-wrap: wrap;
+  border-bottom: 1px solid #e8ece7;
+  position: sticky; top: 0; z-index: 1020;
+}
+.user-chip { border: 1px solid #e8ece7; }
+.avatar-sm, .avatar-lg {
+  display: grid; place-items: center;
+  border-radius: 50%; font-weight: 700;
+}
+.avatar-sm { width: 34px; height: 34px; font-size: .9rem; }
+.avatar-lg { width: 58px; height: 58px; font-size: 1.5rem; }
+.page-content { padding: 20px; flex-grow: 1; }
+@media (max-width: 575.98px) { .page-content { padding: 14px; } }
+
+/* ---------------- Kartu & statistik ---------------- */
+.card { border-radius: 14px; }
+.stat-card { transition: transform .15s ease, box-shadow .15s ease; }
+.stat-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(20,83,45,.12) !important; }
+.stat-icon {
+  width: 46px; height: 46px; flex: 0 0 46px;
+  display: grid; place-items: center;
+  border-radius: 12px; font-size: 1.3rem;
+}
+.chart-box { position: relative; height: 280px; }
+@media (max-width: 767.98px) { .chart-box { height: 230px; } }
+.table > :not(caption) > * > * { padding: .55rem .6rem; }
+.badge { font-weight: 600; }
+
+/* ---------------- Login ---------------- */
+.login-wrap { min-height: 100vh; display: grid; grid-template-columns: 1fr; }
+@media (min-width: 992px) { .login-wrap { grid-template-columns: 1.05fr 1fr; } }
+.login-brand {
+  background:
+    radial-gradient(circle at 20% 15%, rgba(217,119,6,.25), transparent 40%),
+    linear-gradient(160deg, var(--hijau-tua), #0b3a1e);
+  color: #fff; padding: 56px;
+  align-items: center;
+}
+.login-brand h1 { font-size: 2.6rem; line-height: 1.08; letter-spacing: 1px; }
+.brand-logo {
+  width: 64px; height: 64px; background: var(--emas);
+  border-radius: 18px; display: grid; place-items: center;
+  font-size: 2rem; box-shadow: 0 8px 24px rgba(0,0,0,.3);
+}
+.login-feats li { margin-bottom: 10px; opacity: .9; }
+.login-form-side {
+  display: flex; align-items: center; justify-content: center;
+  padding: 32px 20px;
+  background:
+    radial-gradient(circle at 85% 10%, rgba(220,252,231,.9), transparent 35%),
+    var(--krem);
+}
+.login-card { width: 100%; max-width: 460px; border-radius: 20px; }
+.form-control:focus, .form-select:focus {
+  border-color: var(--hijau); box-shadow: 0 0 0 .2rem rgba(22,101,52,.12);
+}
+
+/* ---------------- Chat AI ---------------- */
+.chat-card { max-width: 860px; margin: 0 auto; }
+.chat-body {
+  height: 55vh; min-height: 360px; overflow-y: auto;
+  background: linear-gradient(180deg, var(--hijau-soft), #fff);
+}
+.chat-msg { display: flex; margin-bottom: 12px; }
+.chat-msg.bot { justify-content: flex-start; }
+.chat-msg.me { justify-content: flex-end; }
+.chat-bubble {
+  max-width: 82%; padding: 10px 14px; border-radius: 16px;
+  font-size: .875rem; line-height: 1.5;
+}
+.chat-bot { background: #fff; border: 1px solid #e2e8e0; border-top-left-radius: 4px; box-shadow: 0 2px 6px rgba(0,0,0,.04); }
+.chat-me { background: var(--hijau); color: #fff; border-top-right-radius: 4px; }
+.typing { letter-spacing: 3px; opacity: .5; animation: blink 1s infinite; }
+@keyframes blink { 50% { opacity: .2; } }
+
+/* ---------------- Notifikasi ---------------- */
+.nf-item { transition: background .15s; }
+.nf-item:hover { background: var(--hijau-soft); }
+.nf-item.read { opacity: .68; }
+
+/* ---------------- Lain-lain ---------------- */
+.rp-pick { transition: transform .15s; }
+.rp-pick:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(20,83,45,.12) !important; }
+.font-monospace { font-size: .82em; }
+code { color: var(--hijau); }
+.alert { border-radius: 12px; }
+.btn-success { --bs-btn-bg: var(--hijau); --bs-btn-border-color: var(--hijau); --bs-btn-hover-bg: var(--hijau-tua); --bs-btn-hover-border-color: var(--hijau-tua); --bs-btn-active-bg: var(--hijau-tua); }
+.btn-outline-success { --bs-btn-color: var(--hijau); --bs-btn-border-color: var(--hijau); --bs-btn-hover-bg: var(--hijau); --bs-btn-hover-border-color: var(--hijau); --bs-btn-active-bg: var(--hijau); }
+.text-success { color: var(--hijau) !important; }
+.bg-success { background-color: var(--hijau) !important; }
+.bg-success-subtle { background-color: var(--hijau-muda) !important; }
+.modal-content { border-radius: 16px; }
+.pagination .page-link { color: var(--hijau); }
+.pagination .page-item.active .page-link { background: var(--hijau); border-color: var(--hijau); color: #fff; }
+.nav-pills .nav-link { color: #475569; }
+.nav-pills .nav-link.active { background: var(--hijau); }
+.offcanvas-lg { --bs-offcanvas-width: var(--sidebar-w); }
+
+/* ============================================================
+   ANALISIS KESEHATAN — Level Hijau / Orange / Merah (triase)
+   ============================================================ */
+.triage-dot {
+  width: 12px; height: 12px; border-radius: 50%;
+  display: inline-block; flex: 0 0 auto;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, .05);
+}
+.triage-badge { font-weight: 700; letter-spacing: .02em; }
+.triage-badge.triage-hijau  { background: #dcfce7; color: #15803d; border: 1px solid #86efac; }
+.triage-badge.triage-orange { background: #fef3c7; color: #b45309; border: 1px solid #fcd34d; }
+.triage-badge.triage-merah  { background: #fee2e2; color: #b91c1c; border: 1px solid #fca5a5; }
+
+.triage-tile { border-radius: 14px; transition: transform .15s; }
+.triage-tile:hover { transform: translateY(-2px); }
+.triage-tile-hijau  { border-top: 4px solid #22c55e; }
+.triage-tile-orange { border-top: 4px solid #f59e0b; }
+.triage-tile-merah  { border-top: 4px solid #dc2626; }
+.triage-tile-belum  { border-top: 4px solid #94a3b8; }
+
+.triage-legend { background: #f8fafc; border: 1px solid #e2e8f0; }
+.triage-legend-hijau  { background: #f0fdf4; border-color: #bbf7d0; }
+.triage-legend-orange { background: #fffbeb; border-color: #fde68a; }
+.triage-legend-merah  { background: #fef2f2; border-color: #fecaca; }
+
+.triage-personal { border-radius: 14px; }
+.triage-personal-hijau  { background: linear-gradient(90deg, #f0fdf4, #fff); border-left: 5px solid #22c55e; }
+.triage-personal-orange { background: linear-gradient(90deg, #fffbeb, #fff); border-left: 5px solid #f59e0b; }
+.triage-personal-merah  { background: linear-gradient(90deg, #fef2f2, #fff); border-left: 5px solid #dc2626; }
+.triage-personal-belum  { background: #f8fafc; border-left: 5px solid #94a3b8; }
